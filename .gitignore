@@ -18,3 +18,6 @@ node_modules/
 
 # Windows system files
 Thumbs.db
+
+# React Build files
+build/
