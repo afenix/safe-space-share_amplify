@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  font-family: "Dosis", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  scroll-behavior: smooth;
 }
 
 .App-logo {
@@ -7,32 +12,100 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.s3-icon3 {
+  width: 180px;
+  height: 140px;
+}
+
+.welcome-section {
+  font-size: calc(10px + 2vmin);
+  color: #636363;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.about-section {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e0e0e0;
+  text-align: center;
+  padding: 50px;
+}
+
+.contribute-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #d0d0d0;
+  text-align: center;
+}
+
+.explore-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #c0c0c0;
+  text-align: center;
+}
+
+.action-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #b0b0b0;
+  text-align: center;
+  padding: 25px;
+}
+
+.navigation-buttons {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.navigation-buttons button {
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #4a90e2; /* Blue font color */
+  background-color: #fdd835; /* Yellow background */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.navigation-buttons button:hover {
+  background-color: #fbc02d; /* Slightly darker yellow on hover */
+  transform: scale(1.05);
+}
+
+.navigation-buttons button:focus {
+  outline: none;
+}
+
+/* Ensure the map div has a height */
+#mapDiv {
+  height: 50vh;
+  width: 100%;
+  display: block !important;
 }

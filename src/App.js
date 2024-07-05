@@ -1,12 +1,47 @@
 // Code to render the main application
 import React, { useEffect } from 'react';
-import MapComponent from './components/MapComponent';
-import Survey123Form from './components/Survey123Form';
-import logo from './logo.svg';
+import WelcomeSection from './components/WelcomeSection';
+import AboutSection from './components/AboutSection';
+import ActionSection from './components/ActionSection';
+import ContributeSection from './components/ContributeSection';
+import ExploreSection from './components/ExploreSection';
 import './App.css';
 
 function App() {
-  const surveyUrl = "https://arcg.is/1PTu1L";
+console.log('App component rendered'); // Basic log statement
+  const handleSubmit = async (formData) => {
+    const featureServiceUrl = 'https://services1.arcgis.com/IVzPgL57Mwzk8mu1/arcgis/rest/services/SafeSpaceShare/FeatureServer';
+    const token = 'AAPK83337061f79941cdbcba8ea16add7f1csWFIvmrzXU7TvesGSEbfGqhfxRivSP37KmfuCDfiec8kVrxhDCre40EzzsvFCLSB';
+
+    const addFeature = async () => {
+      const response = await fetch(`${featureServiceUrl}/addFeatures`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          f: 'json',
+          token: token,
+          features: JSON.stringify([
+            {
+              attributes: formData,
+            },
+          ]),
+        }),
+      });
+
+      const result = await response.json();
+      console.log('Add Feature Result:', result);
+    };
+
+    try {
+      await addFeature();
+      alert('Form submitted successfully!');
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to submit form.');
+    }
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -14,11 +49,15 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Safe Space</h1>
-      </header>
-      <Survey123Form surveyUrl={surveyUrl} />
-      <MapComponent />
+      <WelcomeSection />
+      <AboutSection />
+      <ActionSection />
+      <div id="contribute">
+        <ContributeSection />
+      </div>
+      <div id="explore">
+        <ExploreSection />
+      </div>
     </div>
   );
 }
