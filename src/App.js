@@ -8,13 +8,14 @@ import ExploreSection from './components/ExploreSection';
 import './App.css';
 
 function App() {
-console.log('App component rendered'); // Basic log statement
+console.log('App component rendered');
+
   const handleSubmit = async (formData) => {
-    const featureServiceUrl = 'https://services1.arcgis.com/IVzPgL57Mwzk8mu1/arcgis/rest/services/SafeSpaceShare/FeatureServer';
+    const featureServiceUrl = 'https://services1.arcgis.com/IVzPgL57Mwzk8mu1/arcgis/rest/services/S3_Simple/FeatureServer/0/addFeatures';
     const token = 'AAPK83337061f79941cdbcba8ea16add7f1csWFIvmrzXU7TvesGSEbfGqhfxRivSP37KmfuCDfiec8kVrxhDCre40EzzsvFCLSB';
 
     const addFeature = async () => {
-      const response = await fetch(`${featureServiceUrl}/addFeatures`, {
+      const response = await fetch(featureServiceUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -53,7 +54,7 @@ console.log('App component rendered'); // Basic log statement
       <AboutSection />
       <ActionSection />
       <div id="contribute">
-        <ContributeSection />
+        <ContributeSection onSubmit={handleSubmit} />
       </div>
       <div id="explore">
         <ExploreSection />
