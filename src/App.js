@@ -8,13 +8,42 @@ import ExploreSection from './components/ExploreSection';
 import './App.css';
 
 function App() {
-console.log('App component rendered');
-
   const handleSubmit = async (formData) => {
     const featureServiceUrl = 'https://services1.arcgis.com/IVzPgL57Mwzk8mu1/arcgis/rest/services/S3_Simple/FeatureServer/0/addFeatures';
     const token = 'AAPK83337061f79941cdbcba8ea16add7f1csWFIvmrzXU7TvesGSEbfGqhfxRivSP37KmfuCDfiec8kVrxhDCre40EzzsvFCLSB';
 
     const addFeature = async () => {
+      const feature = {
+        attributes: {
+          locationName: formData.locationName,
+          experience_date: formData.experience_date,
+          happinessSadness: formData.happinessSadness,
+          calmAnxious: formData.calmAnxious,
+          awakeTired: formData.awakeTired,
+          safety: formData.safety,
+          belonging: formData.belonging,
+          identityInterpretation: formData.identityInterpretation,
+          identityTypes: formData.identityTypes,
+          // race: formData.race,
+          // ethnicity: formData.ethnicity,
+          // age: formData.age,
+          // sex: formData.sex,
+          // sexuality: formData.sexuality,
+          // genderIdentity: formData.genderIdentity,
+          // politicalViews: formData.politicalViews,
+          // religiousBeliefs: formData.religiousBeliefs,
+          // immigrationStatus: formData.immigrationStatus,
+          // economicBracket: formData.economicBracket,
+          // otherIdentity: formData.otherIdentity,
+          finalThoughts: formData.finalThoughts,
+        },
+        geometry: {
+          x: formData.geometry.longitude,
+          y: formData.geometry.latitude,
+          spatialReference: { wkid: 4326 } // WGS 84
+        }
+      };
+
       const response = await fetch(featureServiceUrl, {
         method: 'POST',
         headers: {
@@ -23,11 +52,7 @@ console.log('App component rendered');
         body: new URLSearchParams({
           f: 'json',
           token: token,
-          features: JSON.stringify([
-            {
-              attributes: formData,
-            },
-          ]),
+          features: JSON.stringify([feature]),
         }),
       });
 
