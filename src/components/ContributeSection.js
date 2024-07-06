@@ -1,13 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import MapComponent from './MapComponent';
 import '../App.css';
 
 const ContributeSection = ({ onSubmit }) => {
-console.log('i am in the ContributeSection')
+console.log('ContributeSection rendered'); // Add this line
+
   const [formData, setFormData] = useState({
     locationName: '',
-    experienceDatetime: '',
+    experience_date: '',
+    happinessSadness: '',
+    calmAnxious: '',
+    awakeTired: '',
+    safety: '',
+    belonging: '',
+    identityInterpretation: '',
+    identityTypes: '',
+    race: '',
+    ethnicity: '',
+    age: '',
+    sex: '',
+    sexuality: '',
+    genderIdentity: '',
+    politicalViews: '',
+    religiousBeliefs: '',
+    immigrationStatus: '',
+    age:  '',
+    economicBracket: '',
+    otherIdentity: '',
+    finalThoughts: '',
   });
+
+  const mapComponentRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,25 +39,27 @@ console.log('i am in the ContributeSection')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit(formData);
+    if (mapComponentRef.current) {
+      mapComponentRef.current.updateFormDataWithPoint();
+    }
+    onSubmit(formData); // Call the onSubmit prop function
   };
 
   return (
     <div className="contribute-section">
-      <h1>Location of Experience</h1>
-      <p>Please add the location of your experience:</p>
-      <MapComponent formData={formData} setFormData={setFormData} />
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name of Location:
-          <input type="text" name="locationName" value={formData.locationName} onChange={handleChange} required />
-        </label>
-        <label>
-          Date and Time of Experience:
-          <input type="datetime-local" name="experienceDatetime" value={formData.experienceDatetime} onChange={handleChange} required />
-        </label>
+      <h1 className="form-headers">Location of Experience</h1>
+      <p className="form-content">How to Add Your Location:</p>
+      <ol className="list-container">
+        <li className='info-text'><b>Explore the Map:</b> Pan and zoom to find your location.</li>
+        <li className='info-text'><b>Use Map Tools </b>(optional):</li>
+          <ul>
+            <li className='info-text'><b>Locate:</b> Click the Locate button to find your current location.</li>
+            <li className='info-text'><b>Search:</b> Search for an address or place.</li>
+          </ul>
+        <li className='info-text'><b>Click to Pinpoint:</b> When ready, single click on the map to place a marker at your chosen location.</li>
+      </ol>
+      <MapComponent ref={mapComponentRef} formData={formData} setFormData={setFormData} onMapReady={() => {}} />
         <button type="submit">Submit</button>
-      </form>
     </div>
   );
 };
