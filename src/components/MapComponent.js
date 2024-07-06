@@ -48,6 +48,16 @@ console.log('MapComponent rendered'); // Add this line
     }
   }
 
+  const formatDateForInput = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  };
+
   useEffect(() => {
     const initializeMap = async () => {
       try {
@@ -155,12 +165,16 @@ console.log('MapComponent rendered'); // Add this line
 
           // Click event handler
           mapView.on('click', event => {
-            console.log('Map clicked at:', event.mapPoint) // Log click event
+            const currentDateTime = new Date().toISOString();
+            const formattedDateTime = formatDateForInput(currentDateTime);
+            console.log('Current Date Time:', currentDateTime);
+
             const point = {
               type: 'point',
               longitude: event.mapPoint.longitude,
               latitude: event.mapPoint.latitude,
-              spatialReference: mapView.spatialReference // Use view's spatialReference
+              spatialReference: mapView.spatialReference,
+              experience_date: formattedDateTime
             }
 
             const symbol = {
@@ -200,7 +214,11 @@ console.log('MapComponent rendered'); // Add this line
             // Update form data with selected point
             setFormData(prevData => ({
               ...prevData,
-              locationName: `${point.longitude}, ${point.latitude}`
+              experience_date: point.experience_date,
+              geometry: {
+                longitude: point.longitude,
+                latitude: point.latitude
+              }
             }));
           });
         };
@@ -221,7 +239,11 @@ console.log('MapComponent rendered'); // Add this line
         if (selectedPoint) {
           setFormData(prevData => ({
             ...prevData,
-            locationName: `${selectedPoint.longitude}, ${selectedPoint.latitude}`
+            experience_date: selectedPoint.experience_date,
+            geometry: {
+              longitude: selectedPoint.longitude,
+              latitude: selectedPoint.latitude
+            }
           }));
         }
       }
