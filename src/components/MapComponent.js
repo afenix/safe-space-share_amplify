@@ -58,7 +58,6 @@ console.log('MapComponent rendered'); // Add this line
           FeatureLayer,
           GraphicsLayer,
           PopupTemplate,
-          Editor,
           Locate,
           Search,
           Expand
@@ -70,7 +69,6 @@ console.log('MapComponent rendered'); // Add this line
             'esri/layers/FeatureLayer',
             'esri/layers/GraphicsLayer',
             'esri/PopupTemplate',
-            'esri/widgets/Editor',
             "esri/widgets/Locate",
             'esri/widgets/Search',
             'esri/widgets/Expand',
