@@ -25,7 +25,6 @@ console.log('ContributeSection rendered'); // Add this line
     politicalViews: '',
     religiousBeliefs: '',
     immigrationStatus: '',
-    age:  '',
     economicBracket: '',
     otherIdentity: '',
     finalThoughts: '',
