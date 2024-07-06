@@ -1,35 +1,41 @@
-import React from 'react';
-import '../App.css';
+import React, { useState } from 'react'
+import EmotionsForm from './EmotionsForm';
+import '../App.css'
 
-const CustomFormComponent =  ({ formData, setFormData, handleChange, handleSubmit }) => {
-    console.log('CustomFormComponent rendered');
+const CustomFormComponent = ({
+  formData,
+  handleSliderChange,
+  handleChange,
+  handleSubmit
+}) => {
+  console.log('formData: ', formData)
 
-    return (
-    <div className="survey-section">
-        <form onSubmit={handleSubmit}>
-            <label>
-            Name of Location:
-            <input type="text" name="locationName" value={formData.locationName} onChange={handleChange} required />
-            </label>
-            <label>
-            Date and Time of Experience:
-            <input type="datetime-local" name="experienceDatetime" value={formData.experienceDatetime} onChange={handleChange} required />
-            </label>
-            <label>
-            Happiness to Sadness (1-5):
-            <input type="number" name="happinessSadness" value={formData.happinessSadness} onChange={handleChange} min="1" max="5" required />
-            </label>
-            <label>
-            Calm to Anxious (1-5):
-            <input type="number" name="calmAnxious" value={formData.calmAnxious} onChange={handleChange} min="1" max="5" required />
-            </label>
-            <label>
-            Awake to Tired (1-5):
-            <input type="number" name="awakeTired" value={formData.awakeTired} onChange={handleChange} min="1" max="5" required />
-            </label>
-            <label>
-            Safety (1-5):
-            <input type="number" name="safety" value={formData.safety} onChange={handleChange} min="1" max="5" required />
+  return (
+    <div className='survey-section'>
+      <form onSubmit={handleSubmit}>
+        <div className='form-group'>
+          <label className='form-labels'>Name of Location:</label>
+          <input
+            className='form-inputs'
+            type='text'
+            name='locationName'
+            value={formData.locationName}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label className='form-labels'>Date and Time of Experience:</label>
+          <input
+            className='form-inputs'
+            type='datetime-local'
+            name='experience_date'
+            value={formData.experience_date}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <EmotionsForm formData={formData} onSliderChange={handleSliderChange} />
             </label>
             <label>
             Belonging (1-5):
@@ -50,4 +56,4 @@ const CustomFormComponent =  ({ formData, setFormData, handleChange, handleSubmi
     );
 };
 
-export default CustomFormComponent;
+export default CustomFormComponent

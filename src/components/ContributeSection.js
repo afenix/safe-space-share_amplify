@@ -68,6 +68,14 @@ const ContributeSection = ({ onSubmit }) => {
     setFormData(prevData => ({ ...prevData, [name]: value }))
   }
 
+  // Handles slider input changes and updates the formData state.
+  const handleSliderChange = (emotion, value) => {
+    setFormData(prevData => ({
+      ...prevData,
+      [emotion]: value
+    }))
+  }
+
   // Handles form submission and calls the onSubmit prop function.
   const handleSubmit = async e => {
     e.preventDefault()
@@ -112,8 +120,15 @@ const ContributeSection = ({ onSubmit }) => {
         setFormData={setFormData}
         onMapReady={() => {}}
       />
+      <CustomFormComponent
+        formData={formData}
+        setFormData={setFormData}
+        handleSliderChange={handleSliderChange}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
-  );
-};
+  )
+}
 
-export default ContributeSection;
+export default ContributeSection
