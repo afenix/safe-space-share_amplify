@@ -44,25 +44,7 @@
   padding: 50px;
 }
 
-.contribute-section {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #d0d0d0;
-  text-align: center;
-}
-
-.explore-section {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #c0c0c0;
-  text-align: center;
-}
+/* Action Section Styling */
 
 .action-section {
   height: 100vh;
@@ -103,9 +85,107 @@
   outline: none;
 }
 
-/* Ensure the map div has a height */
-#mapDiv {
-  height: 50vh;
-  width: 100%;
-  display: block !important;
+
+/* Form Styling */
+
+.contribute-section {
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #5E9DCF;
+  text-align: center;
 }
+
+.map-container {
+  height: 70vh;
+  width: 80vw;
+  margin: 50px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0px 5px 5px 5px;
+}
+
+.survey-section {
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #5E9DCF;
+  text-align: center;
+}
+
+.form-headers {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  margin: 20px 0 0 5px;
+}
+
+.form-content {
+  font-size: 20px;
+  color: white;
+  margin: 10px 0 0 0;
+}
+
+form {
+  margin-top: 20px;
+}
+
+.list-container {
+  margin: 3px;
+}
+
+.info-text {
+  font-size: 16px;
+  color: white;
+  text-align: left;
+  margin: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="datetime-local"] {
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 90%;
+  max-width: 400px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+
+/* Map Styling */
+
+.explore-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #c0c0c0;
+  text-align: center;
+}
+
