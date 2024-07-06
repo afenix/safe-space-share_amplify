@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import MapComponent from './MapComponent';
+import CustomFormComponent from './CustomFormComponent';
 import '../App.css';
 
 const ContributeSection = ({ onSubmit }) => {
@@ -59,7 +60,7 @@ console.log('ContributeSection rendered'); // Add this line
         <li className='info-text'><b>Click to Pinpoint:</b> When ready, single click on the map to place a marker at your chosen location.</li>
       </ol>
       <MapComponent ref={mapComponentRef} formData={formData} setFormData={setFormData} onMapReady={() => {}} />
-        <button type="submit">Submit</button>
+      <CustomFormComponent formData={formData} setFormData={setFormData} handleChange={handleChange} handleSubmit={handleSubmit} />
     </div>
   );
 };
