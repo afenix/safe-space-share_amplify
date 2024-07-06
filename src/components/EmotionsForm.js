@@ -14,8 +14,8 @@ const EmotionsForm = ({ formData, onSliderChange }) => {
 
   return (
     <div className="emotions-form">
-      <h2>how do you feel?</h2>
-      <p>
+      <h1 className="form-headers">How do you feel?</h1>
+      <p className="info-text">
         Emotions can be complex, but we'd like to know how you're feeling right now.
         Please use the sliders below to rate your current emotional state:
       </p>
@@ -40,7 +40,11 @@ const EmotionsForm = ({ formData, onSliderChange }) => {
         onChange={(value) => onSliderChange('awakeTired', value)}
         emojiLabels={['😴', '😪', '😐', '🙂', '😃']}
       />
-      <button className="next-button">NEXT</button>
+      <div className="navigation-buttons">
+      <button onClick={() => document.getElementById('safety-section').scrollIntoView({ behavior: 'smooth' })}>
+          Next
+        </button>
+      </div>
     </div>
   );
 };

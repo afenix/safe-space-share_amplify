@@ -73,7 +73,7 @@
   align-items: left;
   background-color: #e0e0e0;
   text-align: center;
-  padding: 5em;
+  padding: 2em;
   position: relative;
 }
 
@@ -91,7 +91,7 @@
   display: block;
   position: absolute;
   bottom: 3em;
-  right: 3em;
+  right: 2em;
 }
 
 /* Action Section Styling */
@@ -108,20 +108,20 @@
 }
 
 .navigation-buttons {
-  margin: 20px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
+  margin-top: 50px;
 }
 
 .navigation-buttons button {
-  padding: 15px 30px;
+  padding: 10px 25px;
   font-size: 20px;
   font-weight: bold;
   color: #4a90e2; /* Blue font color */
   background-color: #fdd835; /* Yellow background */
   border: none;
-  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
 }
@@ -148,37 +148,35 @@
   text-align: center;
 }
 
-.map-container {
-  height: 70vh;
-  width: 80vw;
-  margin: 50px;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 0px 5px 5px 5px;
-}
 
-.survey-section {
-  /* height: 100vh; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #5E9DCF;
-  text-align: center;
-}
 
 .form-headers {
   font-size: 30px;
   font-weight: bold;
   color: white;
-  margin: 20px 0 0 5px;
+  margin: 20px 0 20px 0px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto auto 20px;
+}
+
+.form-labels {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  text-align: left;
+  margin-bottom: 10px;
 }
 
 .form-content {
   font-size: 20px;
   color: white;
-  margin: 10px 0 0 0;
+  margin: 0;
 }
 
 form {
@@ -212,36 +210,25 @@ input[type="datetime-local"] {
   font-size: 1rem;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #007acc;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-button:hover {
-  background-color: #005fa3;
-}
-
 /* Emotions Form */
 
-/* styles.css */
 .emotions-form {
+  margin: 3rem;
   padding: 20px;
   text-align: center;
+  height: 100vh;
 }
 
 .slider-section {
-  margin-bottom: 20px;
+  margin: 1.5rem 0 1.5rem 0;
 }
 
 .slider-labels {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
+  color: white;
+  font-size: 16px;
 }
 
 .emoji-labels {
@@ -259,16 +246,29 @@ button:hover {
 }
 
 .next-button {
-  background-color: yellow;
+  background-color: #fdd835;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   margin-top: 20px;
+  color: #4a90e2;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 
 /* Map Styling */
+
+.map-container {
+  height: 70vh;
+  width: 80vw;
+  margin: 50px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0px 5px 5px 5px;
+}
 
 .explore-section {
   height: 100vh;
