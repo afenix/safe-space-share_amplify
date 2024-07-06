@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import '../App.css';
 
 const CustomFormComponent =  ({ formData, setFormData, handleChange, handleSubmit }) => {
