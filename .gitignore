@@ -1,5 +1,7 @@
 # Dependency directories
 node_modules/
+# dependencies
+/node_modules
 
 # Optional npm cache directory
 .npm
@@ -19,5 +21,15 @@ node_modules/
 # Windows system files
 Thumbs.db
 
-# React Build files
-build/
+# production
+/build
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
