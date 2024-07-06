@@ -4,21 +4,25 @@ import '../App.css'
 const AboutSection = () => {
   return (
     <div className='about-section'>
-      <h1>What is SafeSpaceShare?</h1>
+      <h1 id='about-header'>What is SafeSpaceShare?</h1>
       <p>
-        In today's diverse society, the experiences of ​individuals can vary
-        widely depending on their ​surroundings. SafeSpaceShare (S3) is a web
-        ​application designed to support our communities ​by giving each of us a
-        platform to share our ​lived experiences in public spaces. Whether these
-        ​experiences are positive or negative, S3 allows ​users to anonymously
-        contribute to a collective ​map that visualizes these experiences.
+        We all experience public spaces differently. These experiences, shaped
+        by who we are and how we are perceived, profoundly impact our sense of
+        safety, well-being, and belonging, but are rarely seen, yet alone seen
+        collectively.
       </p>
       <p>
-        The goal of this tool is to foster inclusivity, ​safety, and awareness
-        by providing a visual ​representation of how different individuals
-        ​perceive and interact with their surroundings.
+        SafeSpaceShare (S3) is designed to allow you to anonymously share your
+        experiences, explore how your identity may have shaped them, and
+        discover how others experience the same places.
       </p>
-      <h1>Let's get started!</h1>
+      <h2 id='about-subtitle'>Ready to dive in? <br/>Let's get started!</h2>
+      <img
+        id='everyone-matters-icon'
+        src={`${process.env.PUBLIC_URL}/everyoneMatters.png`}
+        alt='icon'
+        className='everyone-matters-icon'
+      />
     </div>
   )
 }
