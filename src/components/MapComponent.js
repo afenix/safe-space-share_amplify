@@ -8,7 +8,7 @@ console.log('MapComponent rendered'); // Add this line
   const [view, setView] = useState(null);
   const [selectedPoint, setSelectedPoint] = useState(null);
 
-  const featureServiceUrl = 'https://services1.arcgis.com/IVzPgL57Mwzk8mu1/arcgis/rest/services/SafeSpaceShare/FeatureServer';
+  const featureServiceUrl = 'https://services1.arcgis.com/IVzPgL57Mwzk8mu1/arcgis/rest/services/S3_Simple/FeatureServer';
 
   // Utility functions (most likely to deprecate in the future)
   const fetchSurveyData = async featureServiceUrl => {
@@ -23,6 +23,7 @@ console.log('MapComponent rendered'); // Add this line
     }
   }
 
+  // Function to calculate the center point of features on the map and set the center point of the view
   const calculateCenter = features => {
     if (!features.length) return [0, 0]
 
@@ -121,7 +122,7 @@ console.log('MapComponent rendered'); // Add this line
 
           // Initialize and add the Expand widget to toggle the visibility of the Search widget
           const searchExpand = new Expand({
-            expandIcon: 'search', // // Use a search icon for the expand/collapse button. See https://developers.arcgis.com/calcite-design-system/icons/
+            expandIcon: 'search', // Use a search icon for the expand/collapse button. See https://developers.arcgis.com/calcite-design-system/icons/
             expandTooltip: 'Expand Search', // Custom tooltip text for the expand button
             view: mapView,
             content: searchWidget
@@ -200,16 +201,8 @@ console.log('MapComponent rendered'); // Add this line
               mapView.graphics.remove(existingGraphic)
             };
 
-  // TODO: THIS IS NOT WORKING NEEDS TO BE FIXED
-            // Attach the popupTemplate to the graphic
-            graphic.popupTemplate = popupTemplate
-            mapView.popup.open({
-              features: [graphic],
-              location: event.mapPoint
-            });
-
-            mapView.graphics.add(graphic)
-            setSelectedPoint(point) // Update selectedPoint state
+            mapView.graphics.add(graphic);
+            setSelectedPoint(point); // Update the selectedPoint state
 
             // Update form data with selected point
             setFormData(prevData => ({
