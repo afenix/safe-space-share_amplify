@@ -1,12 +1,12 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState, forwardRef } from 'react'
 import { loadModules } from 'esri-loader'
 
-const MapComponent = ({ formData, setFormData }) => {
-  const mapRef = useRef()
-  const featureServiceUrl =
-    'https://services1.arcgis.com/IVzPgL57Mwzk8mu1/arcgis/rest/services/SafeSpaceShare/FeatureServer'
-  console.log(mapRef.current)
-  const [selectedPoint, setSelectedPoint] = React.useState(null)
+// Use forwardRef to allow the map component to be used as a ref for the parent component (ContributeSection)
+const MapComponent = forwardRef(({formData, setFormData, onMapReady }, ref) => {
+console.log('MapComponent rendered'); // Add this line
+  const mapRef = useRef();
+  const [view, setView] = useState(null);
+  const [selectedPoint, setSelectedPoint] = useState(null);
 
   // Utility functions
   const fetchSurveyData = async featureServiceUrl => {
@@ -60,9 +60,10 @@ const MapComponent = ({ formData, setFormData }) => {
           { css: true }
         )
 
-        const map = new Map({
-          basemap: 'streets-navigation-vector'
-        })
+        if (mapRef.current) {
+          const map = new Map({
+            basemap: 'streets-navigation-vector'
+          });
 
         const view = new MapView({
           container: mapRef.current,
@@ -110,11 +111,27 @@ const MapComponent = ({ formData, setFormData }) => {
         })
       } catch (err) {
         console.error(err)
-      }
-    }
+      };
+    };
 
-    initializeMap()
-  }, [setFormData]) // Only re-run if setFormData changes
+    if (!view && mapRef.current) {
+      initializeMap();
+    }
+  }, [setFormData, onMapReady, view]) // Only re-run if setFormData changes
+
+  // Expose method to parent component via ref
+  if (ref) {
+    ref.current = {
+      updateFormDataWithPoint: () => {
+        if (selectedPoint) {
+          setFormData(prevData => ({
+            ...prevData,
+            locationName: `${selectedPoint.longitude}, ${selectedPoint.latitude}`
+          }));
+        }
+      }
+    };
+  }
 
   return (
     <div>
