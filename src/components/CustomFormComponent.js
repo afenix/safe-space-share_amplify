@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 import EmotionsForm from './EmotionsForm';
+import SafetyForm from './SafetyForm';
+import BelongingForm from './BelongingForm';
+import IdentityForm from './IdentityForm';
+import FinalThoughtsForm from './FinalThoughtsForm.js';
+import ReviewForm from './ReviewForm.js';
 import '../App.css'
 
 const CustomFormComponent = ({
@@ -11,7 +16,7 @@ const CustomFormComponent = ({
   console.log('formData: ', formData)
 
   return (
-    <div className='survey-section'>
+    <div className='form-section'>
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
           <label className='form-labels'>Name of Location:</label>
@@ -36,24 +41,15 @@ const CustomFormComponent = ({
           />
         </div>
         <EmotionsForm formData={formData} onSliderChange={handleSliderChange} />
-            </label>
-            <label>
-            Belonging (1-5):
-            <input type="number" name="belonging" value={formData.belonging} onChange={handleChange} min="1" max="5" required />
-            </label>
-            <label>
-            Identity Related? (yes/no/unsure):
-            <select name="identityRelated" value={formData.identityRelated} onChange={handleChange} required>
-                <option value="">Select an option</option>
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-                <option value="2">Unsure</option>
-            </select>
-            </label>
-            <button type="submit">Submit</button>
-        </form>
+        <SafetyForm formData={formData} onSliderChange={handleSliderChange} />
+        <BelongingForm formData={formData} onSliderChange={handleSliderChange} />
+        <IdentityForm formData={formData} handleChange={handleChange}  />
+        <FinalThoughtsForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
+        <ReviewForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
+        <button type='submit'>Submit</button>
+      </form>
     </div>
-    );
-};
+  )
+}
 
 export default CustomFormComponent

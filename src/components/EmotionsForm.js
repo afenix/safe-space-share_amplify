@@ -41,7 +41,7 @@ const EmotionsForm = ({ formData, onSliderChange }) => {
         emojiLabels={['😴', '😪', '😐', '🙂', '😃']}
       />
       <div className="navigation-buttons">
-      <button onClick={() => document.getElementById('safety-section').scrollIntoView({ behavior: 'smooth' })}>
+      <button type='button' onClick={() => document.getElementById('safety-section').scrollIntoView({ behavior: 'smooth' })}>
           Next
         </button>
       </div>
