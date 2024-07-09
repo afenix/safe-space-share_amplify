@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import MapComponent from './MapComponent'
 import CustomFormComponent from './CustomFormComponent'
+import ScrollArrow from './ScrollArrow'
 import '../App.css'
 
 const ContributeSection = ({ onSubmit }) => {
@@ -10,7 +11,7 @@ const ContributeSection = ({ onSubmit }) => {
     return date.getTime()
   }
 
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     locationName: '',
     experience_date: '',
     happinessSadness: '',
@@ -19,34 +20,23 @@ const ContributeSection = ({ onSubmit }) => {
     safety: '',
     belonging: '',
     identityInterpretation: '',
-    // identityTypes: '',
-    // race: '',
-    // ethnicity: '',
-    // age: '',
-    // sex: '',
-    // sexuality: '',
-    // genderIdentity: '',
-    // politicalViews: '',
-    // religiousBeliefs: '',
-    // immigrationStatus: '',
-    // economicBracket: '',
-    // otherIdentity: '',
+     // identityTypes: '',
     finalThoughts: '',
     geometry: {
       longitude: null,
       latitude: null
     }
-  })
+  }
+
+  const [formData, setFormData] = useState(initialFormData)
 
   const mapComponentRef = useRef(null)
 
-  // This useEffect hook is used to update the formData state with the selected point's longitude and latitude when the mapComponentRef is available.
+  // useEffect hook to update the formData state with the selected point's longitude and latitude
   useEffect(() => {
     if (mapComponentRef.current) {
       mapComponentRef.current.updateFormDataWithPoint = () => {
         if (mapComponentRef.current.selectedPoint) {
-          console.log('Selected Point:', mapComponentRef.current.selectedPoint)
-
           const { longitude, latitude, experience_date } =
             mapComponentRef.current.selectedPoint
           setFormData(prevData => ({
@@ -65,7 +55,10 @@ const ContributeSection = ({ onSubmit }) => {
   // Handles form input changes and updates the formData state.
   const handleChange = e => {
     const { name, value } = e.target
-    setFormData(prevData => ({ ...prevData, [name]: value }))
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: value
+    }))
   }
 
   // Handles slider input changes and updates the formData state.
@@ -86,47 +79,41 @@ const ContributeSection = ({ onSubmit }) => {
       ...formData,
       experience_date: convertToUnixTimestamp(formData.experience_date) // Convert to Unix timestamp
     }
+    // Submit the form data to the server or API here
     onSubmit(formDataWithTimestamp)
+
+    // Clear the form inputs
+    setFormData(initialFormData)
+
+    // Show success alert
+    window.alert('Your Experience was submitted successfully! THANK YOU! Your data will help support and improve community awareness and safety.')
+
+    // Scroll to the "Action section" element
+    document
+      .getElementById('action-section')
+      .scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <div className='contribute-section'>
-      <h1 className='form-headers'>Location of Experience</h1>
-      <p className='form-content'>How to Add Your Location:</p>
-      <ol className='list-container'>
-        <li className='info-text'>
-          <b>Explore the Map:</b> Pan and zoom to find your location.
-        </li>
-        <li className='info-text'>
-          <b>Use Map Tools </b>(optional):
-        </li>
-        <ul>
-          <li className='info-text'>
-            <b>Locate:</b> Click the Locate button to find your current
-            location.
-          </li>
-          <li className='info-text'>
-            <b>Search:</b> Search for an address or place.
-          </li>
-        </ul>
-        <li className='info-text'>
-          <b>Click to Pinpoint:</b> When ready, single click on the map to place
-          a marker at your chosen location.
-        </li>
-      </ol>
-      <MapComponent
-        ref={mapComponentRef}
-        formData={formData}
-        setFormData={setFormData}
-        onMapReady={() => {}}
-      />
-      <CustomFormComponent
-        formData={formData}
-        setFormData={setFormData}
-        handleSliderChange={handleSliderChange}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
+    <div>
+      <div id='map-section'>
+        <MapComponent
+          ref={mapComponentRef}
+          formData={formData}
+          setFormData={setFormData}
+          onMapReady={() => {}}
+        />
+        <ScrollArrow targetId='form-section' />
+      </div>
+      <div id='form-section'>
+        <CustomFormComponent
+          formData={formData}
+          setFormData={setFormData}
+          handleSliderChange={handleSliderChange}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      </div>
     </div>
   )
 }
