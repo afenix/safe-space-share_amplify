@@ -4,7 +4,8 @@ import WelcomeSection from './components/WelcomeSection';
 import AboutSection from './components/AboutSection';
 import ActionSection from './components/ActionSection';
 import ContributeSection from './components/ContributeSection';
-import ExploreSection from './components/ExploreSection';
+import ExploreMapSection from './components/ExploreMapSection';
+import ScrollArrow from './components/ScrollArrow';
 import './App.css';
 
 function App() {
@@ -62,10 +63,10 @@ function App() {
 
     try {
       await addFeature();
-      alert('Form submitted successfully!');
+      console.log('Form submitted successfully!');
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Failed to submit form.');
+      console.log('Failed to submit form.');
     }
   };
 
@@ -75,14 +76,20 @@ function App() {
 
   return (
     <div className="App">
-      <WelcomeSection />
-      <AboutSection />
+      <div className="welcome-section">
+        <WelcomeSection />
+        <ScrollArrow targetId="about-section" />
+      </div>
+      <div id='about-section'>
+        <AboutSection />
+        <ScrollArrow targetId="action-section" />
+      </div>
       <ActionSection />
       <div id="contribute">
         <ContributeSection onSubmit={handleSubmit} />
       </div>
       <div id="explore">
-        <ExploreSection />
+        <ExploreMapSection />
       </div>
     </div>
   );
