@@ -3,14 +3,15 @@ import '../App.css';
 
 const ActionSection = () => {
   return (
-    <div className="action-section">
-      <h1>What would you like to do today?</h1>
+    <div id="action-section">
+      <h1 className="section-header">What would you like to do today?</h1>
+      <p className="info-text">Click on an option below to get started</p>
       <div className="navigation-buttons">
         <button onClick={() => document.getElementById('contribute').scrollIntoView({ behavior: 'smooth' })}>
-          Contribute to the Map
+          Share Your Experience
         </button>
         <button onClick={() => document.getElementById('explore').scrollIntoView({ behavior: 'smooth' })}>
-          Explore the Map
+          Explore Experiences
         </button>
       </div>
     </div>

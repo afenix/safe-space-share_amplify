@@ -1,11 +1,12 @@
 import React from 'react';
 
-const SliderSection = ({ labelLeft, labelRight, value, onChange, emojiLabels }) => {
+const SliderComponent = ({ labelLeft, labelRight, value, onChange, emojiLabels, labels }) => {
   return (
     <div className="slider-section">
       <div className="slider-labels">
-        <span>{labelLeft}</span>
-        <span>{labelRight}</span>
+      {labels.map((label, index) => (
+          <span key={index}>{label}</span>
+        ))}
       </div>
       <input
         type="range"
@@ -26,4 +27,4 @@ const SliderSection = ({ labelLeft, labelRight, value, onChange, emojiLabels }) 
   );
 };
 
-export default SliderSection;
+export default SliderComponent;

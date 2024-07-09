@@ -7,8 +7,8 @@ const IdentityForm = ({ formData, handleChange }) => {
       };
 
   return (
-    <div id="identity-section" className='identity-form'>
-      <h1 className='form-headers'>
+    <div>
+      <h1 className='section-header'>
         Is Your Experience Related to Your Perceived Identity?
       </h1>
       <p className='info-text'>
@@ -45,11 +45,6 @@ const IdentityForm = ({ formData, handleChange }) => {
           onClick={(e) => handleButtonClick(2, e)}
         >
           UNCERTAIN
-        </button>
-      </div>
-      <div className="navigation-buttons">
-      <button type="button" onClick={() => document.getElementById('final-section').scrollIntoView({ behavior: 'smooth' })}>
-          Next
         </button>
       </div>
     </div>
