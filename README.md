@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# SafeSpaceShare
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SafeSpaceShare is a mobile-first React application designed to collect and visualize personal experiences related to emotional well-being and safety. It utilizes the ArcGIS JavaScript API for interactive mapping and leverages ArcGIS Online (AGOL) to store user-generated data securely on a feature service. The application is built on the React framework to facilitate learning and ensure scalability for future growth and enhancements.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+* **Mobile-First Design:** Designed to work on mobile devices and desktops.
+* **Interactive Mapping:** Visualize and explore user experiences on a map.
+* **Emotional Well-being Data Collection:** Users can share their feelings and experiences related to happiness, calmness, safety, belonging, and more.
+* **Data Security:** User data is stored securely on an ArcGIS Online feature service.
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* **Node.js and npm (or yarn):** Make sure you have Node.js and either npm or yarn installed on your local machine. You can check this by running `node -v` and `npm -v` (or `yarn -v`) in your terminal.
+* **ArcGIS Developer Account:** Create a free ArcGIS Developer account to access the ArcGIS JavaScript API. You can sign up here: [ArcGIS Developer](https://developers.arcgis.com/)
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the Repository:**
+    ```sh
+    git clone https://github.com/afenix/safespaceshare.git
+    cd safespaceshare
+    ```
 
-### `npm run build`
+2. **Install Dependencies:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ```sh
+    npm install
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    or
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```sh
+    yarn install
+    ```
 
-### `npm run eject`
+3. **Start the Development Server:**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```sh
+    npm start
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    Runs the app in the development mode.\
+    Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    The page will reload when you make changes.\
+    You may also see any lint errors in the console.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contributing
 
-## Learn More
+Contributions are welcome! Please feel free to submit bug reports, feature requests, or pull requests.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Fork the repository.**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. **Create a new branch for your feature or bug fix:**
 
-### Code Splitting
+    ```sh
+    git checkout -b feature-name
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. **Commit your changes:**
 
-### Analyzing the Bundle Size
+    ```sh
+    git commit -m "Add feature"
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. **Push to your branch:**
 
-### Making a Progressive Web App
+    ```sh
+    git push origin feature-name
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+5. **Open a pull request.**
 
-### Advanced Configuration
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This project is licensed under the GNU General Public License (GPL).
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
