@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import EmotionsForm from './EmotionsForm';
-import SafetyForm from './SafetyForm';
-import BelongingForm from './BelongingForm';
-import IdentityForm from './IdentityForm';
-import FinalThoughtsForm from './FinalThoughtsForm.js';
-import ReviewForm from './ReviewForm.js';
+import LocationTimeForm from './LocationTimeForm.js'
+import EmotionsForm from './EmotionsForm'
+import SafetyForm from './SafetyForm'
+import BelongingForm from './BelongingForm'
+import IdentityForm from './IdentityForm'
+import FinalThoughtsForm from './FinalThoughtsForm.js'
+import ReviewForm from './ReviewForm.js'
+import ScrollArrow from './ScrollArrow'
 import '../App.css'
 
 const CustomFormComponent = ({
@@ -18,35 +20,52 @@ const CustomFormComponent = ({
   return (
     <div className='form-section'>
       <form onSubmit={handleSubmit}>
-        <div className='form-group'>
-          <label className='form-labels'>Name of Location:</label>
-          <input
-            className='form-inputs'
-            type='text'
-            name='locationName'
-            value={formData.locationName}
-            onChange={handleChange}
-            required
+        <div id='location-time-section'>
+          <LocationTimeForm formData={formData} handleChange={handleChange} />
+          <ScrollArrow targetId='emotions-section' />
+        </div>
+        <div id='emotions-section'>
+          <EmotionsForm
+            formData={formData}
+            onSliderChange={handleSliderChange}
+          />
+          <ScrollArrow targetId='safety-section' />
+        </div>
+
+        <div id='safety-section'>
+          <SafetyForm formData={formData} onSliderChange={handleSliderChange} />
+          <ScrollArrow targetId='belonging-section' />
+        </div>
+
+        <div id='belonging-section'>
+          <BelongingForm
+            formData={formData}
+            onSliderChange={handleSliderChange}
+          />
+          <ScrollArrow targetId='identity-section' />
+        </div>
+
+        <div id='identity-section'>
+          <IdentityForm formData={formData} handleChange={handleChange} />
+          <ScrollArrow targetId='final-thoughts-section' />
+        </div>
+
+        <div id='final-thoughts-section'>
+          <FinalThoughtsForm
+            formData={formData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+          <ScrollArrow targetId='review-section' />
+        </div>
+
+        <div id='review-section'>
+          <ReviewForm
+            formData={formData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
           />
         </div>
-        <div className='form-group'>
-          <label className='form-labels'>Date and Time of Experience:</label>
-          <input
-            className='form-inputs'
-            type='datetime-local'
-            name='experience_date'
-            value={formData.experience_date}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <EmotionsForm formData={formData} onSliderChange={handleSliderChange} />
-        <SafetyForm formData={formData} onSliderChange={handleSliderChange} />
-        <BelongingForm formData={formData} onSliderChange={handleSliderChange} />
-        <IdentityForm formData={formData} handleChange={handleChange}  />
-        <FinalThoughtsForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
-        <ReviewForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
-        <button type='submit'>Submit</button>
       </form>
     </div>
   )
