@@ -1,5 +1,5 @@
 // Code to render the main application
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import WelcomeSection from './components/WelcomeSection';
 import AboutSection from './components/AboutSection';
 import ActionSection from './components/ActionSection';
@@ -9,7 +9,9 @@ import ScrollArrow from './components/ScrollArrow';
 import './App.css';
 
 function App() {
+  const [mapKey, setMapKey] = useState(0); // State to trigger map re-initialization
   const handleSubmit = async (formData) => {
+    // Increment the mapKey to trigger re-initialization
     const featureServiceUrl = 'https://services1.arcgis.com/IVzPgL57Mwzk8mu1/arcgis/rest/services/S3_Simple/FeatureServer/0/addFeatures';
     const token = 'AAPK83337061f79941cdbcba8ea16add7f1csWFIvmrzXU7TvesGSEbfGqhfxRivSP37KmfuCDfiec8kVrxhDCre40EzzsvFCLSB';
 
@@ -63,6 +65,7 @@ function App() {
 
     try {
       await addFeature();
+      setMapKey(prevKey => prevKey + 1);
       console.log('Form submitted successfully!');
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -89,7 +92,7 @@ function App() {
         <ContributeSection onSubmit={handleSubmit} />
       </div>
       <div id="explore">
-        <ExploreMapSection />
+        <ExploreMapSection key={mapKey}/>
       </div>
     </div>
   );
